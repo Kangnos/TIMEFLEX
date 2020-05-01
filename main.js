@@ -21,7 +21,7 @@ function printClock() {
     }
 
 
-    clock.innerHTML = "<span style='font-size:50px;'>"+ amPm+"</span> " +"<span class=' timezone'>"+ currentHours+":"+currentMinute+":"+currentSeconds+"</span> "; //날짜를 출력해 줌
+    clock.innerHTML = "<span class='amPm'>"+ amPm+"</span> " +"<span class='timezone'>"+ currentHours+":"+currentMinute+":"+currentSeconds+"</span> "; //날짜를 출력해 줌
     
     setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
 }
