@@ -1,7 +1,17 @@
 #clock{
     padding: 40px;
-    text-align: center;
+    left:50%;
+    top:50%;
+    margin-top: 19.2%;
+    margin-bottom: 10%;
 }
 .timezone{
     font-family: clockicons,sans-serif;
+}
+body {
+    background-image : url('https://lh5.googleusercontent.com/proxy/tjJRG8ELyrHCJQ18ThdF1ybYJ9CP1q6jDyCAECruLxqefc2gvH9YYUjKItQyvmWClmOoC3XivqciC7PbY2-1NtWxLE7fNsJFqYflxTi2EyE=w3840-h2160-p-k-no-nd-mv');
+
+    background-repeat : no-repeat;
+
+    background-size : cover;
 }
