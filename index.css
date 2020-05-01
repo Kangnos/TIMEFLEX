@@ -1,0 +1,7 @@
+#clock{
+    padding: 40px;
+    text-align: center;
+}
+.timezone{
+    font-family: clockicons,sans-serif;
+}
