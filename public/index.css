@@ -1,0 +1,33 @@
+#clock{
+    padding: 40px;
+    left:50%;
+    top:50%;
+    margin-top: 17.9%;
+    margin-bottom: inherit;
+    color:black; 
+    font-weight: bold; 
+    font-size:100px; 
+    text-align:center;
+}
+.timezone{
+    font-family: clockicons,sans-serif;
+    font-size: 90px;
+    font-weight: bold;
+}
+.amPm{
+    font-size:50px;
+    font-weight: bold;
+}
+html{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    background-image: url(https://lh4.googleusercontent.com/proxy/c7tPX0fpwmqIljPMIAbvVipXrd2ksOOzvEvVcrV0OSWpo3-D3pjIYGBFUEYi_NCJ65_SWY_64q1Ttu1UO_vZwo5vmzQb9JzxyKaJ6a6ubA=w3840-h2160-p-k-no-nd-mv);
+}
