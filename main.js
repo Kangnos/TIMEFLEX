@@ -1,34 +1,47 @@
-var express = require('express')
-var app = express()
 var fs = require('fs')
+var express = require('express')
+var app = express();
+var timepage = require('./lib/timepage.js')
+var timecore = require('./public/time_core.js')
 var path = require('path')
-var MusicFlexMainPage = require('./lib/mainpage.js')
-var MusicFlexMusicPage = require('./lib/musicpage.js')
-var compression = require('compression');
-app.use(express.static('public'));
-app.use(compression())
+var helemt = require('helmet')
+var compression = require('compression')
+app.use(compression());
+app.use(express.static('public'))
 
+app.get('/', function(request, response){
+    var currentDate = new Date();       
+    var currentHours = currentDate.getHours(); 
+    var currentMinute = currentDate.getMinutes();
+    var currentSeconds = currentDate.getSeconds();
+    var amPm = '오전'; // 초기값 AM
+    if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+    	amPm = '오후';
+    	currentHours = addZeros(currentHours - 12);
+    }
+    if (currentSeconds <= 9) {
+        currentSeconds = addZeros(currentSeconds);
+    }
+    if (currentMinute <= 9){
+        currentMinute = addZeros(currentMinute);
+        
+    }
+    function addZeros(num, digit) { // 자릿수 맞춰주기
+        var zero = 0;
+        num = num.toString();
+        if (num.length < digit) {
+          for (i = 0; i < digit - num.length; i++) {
+            zero += 0;
+          }
+        }
+        return zero + num;
+    }
+    var title = amPm + " " + currentHours + ":" + currentMinute 
 
-app.get('/', function(req, res){
-    var mainpage = MusicFlexMainPage.HTML();
-    res.send(mainpage)
-});
-
-app.get('/Rap/:pageId', function(req, res) {
-    fs.readdir('./musics', function (err, filelist) {
-        var filteredMusic = path.parse(req.params.pageId).base;
-        fs.readFile(`musics/Rap/${filteredMusic}`, 'utf8', function (err, data) {
-            if( err ) throw err
-            var arr = data.split("\r\n")
-            var music_title = arr[0]
-            var videolinkcode = arr[1]
-            var nextlocation = arr[2]
-            var musicpage = MusicFlexMusicPage.HTML(music_title, videolinkcode, nextlocation)
-            res.send(musicpage)
-        })
-    })
+    var main_index = timepage.HTML(title)
+    response.send(main_index)
 })
 
 app.listen(3000, function() {
-    console.log("Example app is running")
-})
+    console.log("Example app is running on port 3000");
+});
